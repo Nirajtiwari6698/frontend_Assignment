@@ -43,11 +43,10 @@ function Navigation(): React.JSX.Element {
         <h1 className={styles.navTitle}>Frontend Developer Assignment</h1>
         <div className={styles.navLinks}>
           <NavLink
-            to="/"
+            to="/tree"
             className={({ isActive }) =>
               isActive ? styles.navLinkActive : styles.navLink
             }
-            end
           >
             Tree View
           </NavLink>
@@ -107,7 +106,8 @@ export function App(): React.JSX.Element {
         <Navigation />
         <main className={styles.main}>
           <Routes>
-            <Route path="/" element={<TreeViewPage />} />
+            <Route path="/" element={<KanbanBoardPage />} />
+            <Route path="/tree" element={<TreeViewPage />} />
             <Route path="/kanban" element={<KanbanBoardPage />} />
           </Routes>
         </main>
