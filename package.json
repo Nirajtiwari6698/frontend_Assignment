@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://nirajtiwari6698.github.io/frontend_Assignment/",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
