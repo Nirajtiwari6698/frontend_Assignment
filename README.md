@@ -2,8 +2,6 @@
 
 A React + TypeScript project with Tree View and Kanban Board components. Built with Vite and DnD Kit for drag-and-drop functionality.
 
----
-
 ## What's Inside
 
 ### Tree View
@@ -23,8 +21,6 @@ A task board with three columns:
 - Drag and drop within and across columns
 - Responsive layout
 
----
-
 ## Tech Stack
 
 - React 19.2.0
@@ -33,8 +29,6 @@ A task board with three columns:
 - DnD Kit for drag and drop
 - React Router for navigation
 - CSS Modules for styling
-
----
 
 ## Running the Project
 
@@ -61,8 +55,6 @@ npm run lint
 npm run format
 ```
 
----
-
 ## Project Structure
 
 ```
@@ -85,44 +77,21 @@ src/
 │       ├── types.ts
 │       └── TreeView.module.css
 └── main.tsx
-```
+## Notes
 
----
+Drag and drop in TreeView took longer than expected. Handling nested updates without mutating state was tricky at first.
 
-## Implementation Notes
+I kept state local to components instead of adding Zustand since project size is small.
 
-**What works well:**
-- TypeScript is strict, no 'any' types
-- State management is clean and immutable
-- Drag and drop works for most cases
-- UI is clean and minimal
+Cross-parent drag and drop logic exists in utils but I didn't finish wiring it due to time constraints.
 
-**What could be improved:**
-- TreeView cross-parent drag and drop is partially implemented (helper exists but not wired up)
-- Mobile responsive design could use proper media queries
-- No unit tests included
-- Using native window.confirm() for delete confirmations
+## Future Work
 
-See IMPLEMENTATION_REPORT.md for more details.
-
----
-
-## Future Improvements
-
-- Complete cross-parent drag and drop in TreeView
-- Add error boundaries
-- Write unit tests
-- Improve mobile layout with media queries
-- Add toast notifications instead of confirm dialogs
-- Virtualization for large lists
-
----
+- Complete cross-parent DnD in TreeView
+- Improve mobile layout with proper media queries
+- Add unit tests
 
 ## Links
 
 - Live Demo: [add your deployed URL]
-- GitHub: [add your repo URL]
-
----
-
-Built by Niraj | February 2026
+- GitHub: https://github.com/Nirajtiwari6698/frontend_Assignment
