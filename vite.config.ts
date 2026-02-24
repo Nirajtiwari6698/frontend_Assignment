@@ -6,6 +6,9 @@ import path from 'path'
 export default defineConfig({
   plugins: [react()],
   base: '/frontend_Assignment/',
+  build: {
+    outDir: 'docs'
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
