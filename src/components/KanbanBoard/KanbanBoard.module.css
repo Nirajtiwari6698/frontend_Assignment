@@ -1,18 +1,273 @@
-.container {
-  padding: var(--space-6);
-  background-color: var(--color-bg-primary);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-gray-200);
+/**
+ * KanbanBoard Component - Clean Enterprise Design
+ * Minimal, professional board styling
+ */
+
+/* Board container */
+.board {
+  padding: 0;
+  min-height: calc(100vh - 108px);
+  background-color: transparent;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
-.title {
-  font-size: var(--text-xl);
+.boardTitle {
+  font-size: 20px;
   font-weight: 600;
-  color: var(--color-text-primary);
-  margin-bottom: var(--space-4);
+  margin-bottom: 20px;
+  color: #1a1a1a;
 }
 
-.description {
-  color: var(--color-text-secondary);
-  font-size: var(--text-base);
+/* Columns container */
+.columnsContainer {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 16px;
+}
+
+/* Responsive: stack on mobile */
+@media (max-width: 768px) {
+  .columnsContainer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* Individual column */
+.column {
+  background-color: #ffffff;
+  border-radius: 8px;
+  min-width: 280px;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 140px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border-top: 3px solid #e1e4e8;
+}
+
+@media (max-width: 768px) {
+  .column {
+    min-width: auto;
+    max-width: none;
+    width: 100%;
+  }
+}
+
+/* Column variants by status */
+.columnTodo {
+  border-top-color: #2196f3;
+}
+
+.columnInProgress {
+  border-top-color: #ff9800;
+}
+
+.columnDone {
+  border-top-color: #4caf50;
+}
+
+/* Column header */
+.columnHeader {
+  padding: 16px;
+  border-bottom: 1px solid #f0f2f5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.columnTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.columnTitleText {
+  font-weight: 600;
+  font-size: 14px;
+  color: #1a1a1a;
+}
+
+.cardCount {
+  background-color: #f0f2f5;
+  border-radius: 12px;
+  padding: 2px 8px;
+  font-size: 12px;
+  color: #666;
+  font-weight: 500;
+}
+
+.addButton {
+  background-color: #f0f2f5;
+  border: none;
+  border-radius: 4px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 16px;
+  line-height: 1;
+  transition: all 0.2s ease;
+}
+
+.addButton:hover {
+  background-color: #e1e4e8;
+  color: #333;
+}
+
+/* Cards list container */
+.cardsList {
+  padding: 12px;
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Individual card */
+.card {
+  background-color: #ffffff;
+  border-radius: 6px;
+  padding: 12px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  cursor: grab;
+  position: relative;
+  border: 1px solid #e1e4e8;
+  border-left: 3px solid #e1e4e8;
+  transition: all 0.15s ease;
+}
+
+.card:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  border-color: #d1d5db;
+}
+
+/* Done column card styling */
+.cardDone {
+  background-color: #f8fdf8;
+  border-left-color: #4caf50;
+}
+
+.cardTitle {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.4;
+  word-break: break-word;
+  margin-right: 20px;
+}
+
+/* Delete button */
+.deleteButton {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  opacity: 0;
+  transition: opacity 0.2s;
+  color: #999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card:hover .deleteButton {
+  opacity: 1;
+}
+
+.deleteButton:hover {
+  color: #d32f2f;
+}
+
+/* Edit input */
+.editInput {
+  width: 100%;
+  padding: 6px;
+  border: 2px solid #2196f3;
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+.editInput:focus {
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+}
+
+/* Add card form */
+.addCardForm {
+  background-color: #ffffff;
+  border-radius: 6px;
+  padding: 12px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e1e4e8;
+  margin-bottom: 8px;
+}
+
+.addCardInput {
+  width: 100%;
+  padding: 6px;
+  border: 2px solid #e1e4e8;
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+  margin-bottom: 8px;
+  font-family: inherit;
+}
+
+.addCardInput:focus {
+  border-color: #2196f3;
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+}
+
+.addCardActions {
+  display: flex;
+  gap: 8px;
+}
+
+.addCardButton {
+  padding: 6px 12px;
+  background-color: #2196f3;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background-color 0.15s;
+}
+
+.addCardButton:hover {
+  background-color: #1976d2;
+}
+
+.cancelButton {
+  padding: 6px 12px;
+  background-color: #f0f2f5;
+  color: #666;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background-color 0.15s;
+}
+
+.cancelButton:hover {
+  background-color: #e1e4e8;
+  color: #333;
+}
+
+/* Drag overlay */
+.dragOverlay {
+  transform: rotate(2deg);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }

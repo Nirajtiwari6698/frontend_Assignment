@@ -1,106 +1,128 @@
-# Frontend Assignment
+# Frontend Developer Assignment
 
-A production-ready React + TypeScript project with drag-and-drop functionality.
+A React + TypeScript project with Tree View and Kanban Board components. Built with Vite and DnD Kit for drag-and-drop functionality.
 
-## Features
+---
 
-- React 18+ with TypeScript (strict mode)
-- Vite build tool for fast development
-- Drag & Drop with @dnd-kit
-- ESLint + Prettier for code quality
-- Absolute imports with path aliases
-- CSS Modules for scoped styling
-- Clean architecture with component folders
+## What's Inside
+
+### Tree View
+
+A hierarchical tree component with:
+- Expand/collapse nodes
+- Add, edit, delete nodes inline
+- Drag and drop to reorder (same level)
+- Lazy loading simulation
+- TypeScript strict mode
+
+### Kanban Board
+
+A task board with three columns:
+- Todo, In Progress, Done
+- Add, edit, delete cards
+- Drag and drop within and across columns
+- Responsive layout
+
+---
 
 ## Tech Stack
 
-- **Framework**: React 18+ with TypeScript
-- **Build Tool**: Vite
-- **Drag & Drop**: @dnd-kit/core, @dnd-kit/sortable
-- **Styling**: CSS Modules + CSS Variables
-- **Utilities**: uuid, classnames
-- **Linting**: ESLint with TypeScript rules
-- **Formatting**: Prettier
+- React 19.2.0
+- TypeScript 5.9.3 (strict mode)
+- Vite 7.3.1
+- DnD Kit for drag and drop
+- React Router for navigation
+- CSS Modules for styling
 
-## Getting Started
+---
 
-### Prerequisites
-
-- Node.js 18+
-- npm or yarn
-
-### Installation
+## Running the Project
 
 ```bash
+# Install dependencies
 npm install
-```
 
-### Development
-
-```bash
+# Start dev server
 npm run dev
 ```
 
-### Build
+App runs at http://localhost:5173
+
+### Build for production
 
 ```bash
 npm run build
 ```
 
-### Lint
+### Lint and format
 
 ```bash
 npm run lint
+npm run format
 ```
+
+---
 
 ## Project Structure
 
 ```
 src/
-├── app/              # Application-level components
-│   ├── App.tsx       # Root component
-│   ├── routes.tsx    # Route configuration
-│   └── index.ts      # App exports
-├── components/       # Reusable components
-│   ├── TreeView/
-│   └── KanbanBoard/
-├── hooks/            # Custom React hooks
-├── utils/            # Utility functions
-├── types/            # TypeScript types
-├── styles/           # Global styles and CSS variables
-└── assets/           # Static assets
+├── app/
+│   ├── App.tsx              - Main app with routing
+│   └── App.module.css       - Global styles
+├── components/
+│   ├── KanbanBoard/
+│   │   ├── KanbanBoard.tsx  - Board component
+│   │   ├── Column.tsx       - Column component
+│   │   ├── Card.tsx         - Card component
+│   │   ├── reducer.ts       - State reducer
+│   │   ├── types.ts         - TypeScript types
+│   │   └── KanbanBoard.module.css
+│   └── TreeView/
+│       ├── TreeView.tsx     - Tree component
+│       ├── SortableTreeNode.tsx
+│       ├── tree.utils.ts    - Helper functions
+│       ├── types.ts
+│       └── TreeView.module.css
+└── main.tsx
 ```
 
-## Absolute Imports
+---
 
-Configure your editor to recognize path aliases:
+## Implementation Notes
 
-```typescript
-// Instead of relative paths
-import { TreeView } from '../../../components/TreeView'
+**What works well:**
+- TypeScript is strict, no 'any' types
+- State management is clean and immutable
+- Drag and drop works for most cases
+- UI is clean and minimal
 
-// Use absolute imports
-import { TreeView } from '@/components/TreeView'
-```
+**What could be improved:**
+- TreeView cross-parent drag and drop is partially implemented (helper exists but not wired up)
+- Mobile responsive design could use proper media queries
+- No unit tests included
+- Using native window.confirm() for delete confirmations
 
-## Development Guidelines
+See IMPLEMENTATION_REPORT.md for more details.
 
-- Use functional components with explicit return types
-- No `any` types allowed
-- Use CSS Modules for component styling
-- Follow strict TypeScript rules
-- Keep components small and focused
-- Use absolute imports for cross-module references
+---
 
-## Available Scripts
+## Future Improvements
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start development server |
-| `npm run build` | Build for production |
-| `npm run preview` | Preview production build |
-| `npm run lint` | Run ESLint |
+- Complete cross-parent drag and drop in TreeView
+- Add error boundaries
+- Write unit tests
+- Improve mobile layout with media queries
+- Add toast notifications instead of confirm dialogs
+- Virtualization for large lists
 
-## License
+---
 
-MIT
+## Links
+
+- Live Demo: [add your deployed URL]
+- GitHub: [add your repo URL]
+
+---
+
+Built by Niraj | February 2026

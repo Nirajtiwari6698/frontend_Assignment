@@ -1,18 +1,210 @@
-.container {
-  padding: var(--space-6);
-  background-color: var(--color-bg-primary);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-gray-200);
+/**
+ * TreeView Component - Clean Enterprise Design
+ * Minimal, professional tree hierarchy styling
+ */
+
+.treeView {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
 }
 
-.title {
-  font-size: var(--text-xl);
+.nodeContainer {
+  position: relative;
+}
+
+.nodeRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  transition: background-color 150ms ease;
+  min-height: 32px;
+}
+
+.nodeRow:hover {
+  background-color: #f0f2f5;
+}
+
+.toggleButton {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 10px;
+  color: #666;
+  transition: all 200ms ease;
+  flex-shrink: 0;
+}
+
+.toggleButton:hover {
+  color: #333;
+}
+
+.toggleButton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.expanded {
+  transform: rotate(0deg);
+  transition: transform 200ms ease;
+  display: inline-block;
+}
+
+.collapsed {
+  transform: rotate(-90deg);
+  transition: transform 200ms ease;
+  display: inline-block;
+}
+
+.leaf {
+  font-size: 6px;
+  color: #999;
+}
+
+.spinner {
+  display: inline-block;
+  animation: spin 1s linear infinite;
+  font-size: 12px;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.nodeIcon {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
   font-weight: 600;
-  color: var(--color-text-primary);
-  margin-bottom: var(--space-4);
+  color: #555;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  background-color: #e8eaed;
 }
 
-.description {
-  color: var(--color-text-secondary);
-  font-size: var(--text-base);
+.level0, .level1, .level2, .level3 {
+  background-color: #e8eaed;
+  color: #555;
+}
+
+.newNode {
+  background-color: #ddd;
+  color: #666;
+}
+
+.nodeName {
+  flex: 1;
+  font-weight: 400;
+  cursor: text;
+  user-select: none;
+  color: #333;
+}
+
+.nodeName:hover {
+  color: #1a1a1a;
+}
+
+.editInput {
+  flex: 1;
+  padding: 4px 8px;
+  border: 2px solid #2196f3;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  background: white;
+}
+
+.editInput:focus {
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+}
+
+.actions {
+  display: flex;
+  gap: 4px;
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+
+.nodeRow:hover .actions {
+  opacity: 1;
+}
+
+.actionButton {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f2f5;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  color: #666;
+  transition: all 150ms ease;
+  padding: 0;
+}
+
+.actionButton:hover {
+  background: #e1e4e8;
+  color: #333;
+}
+
+.actionButton.delete:hover {
+  background: #fee2e2;
+  color: #d32f2f;
+}
+
+.children {
+  position: relative;
+  margin-left: 11px;
+  padding-left: 11px;
+  border-left: 1px solid #e1e4e8;
+}
+
+.dragHandle {
+  width: 16px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  color: #999;
+  font-size: 10px;
+  letter-spacing: -1px;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.dragHandle:hover {
+  color: #666;
+}
+
+.dragHandle:active {
+  cursor: grabbing;
+}
+
+.dropTarget {
+  background-color: #f5f9ff;
+  border-radius: 4px;
+}
+
+.dropTarget > .nodeRow {
+  background-color: #e8f0fe;
 }
